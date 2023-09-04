@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        let user = {
+          // 객체 생성
+          name: "John", // 키: "name", 값: "John"
+          age: 30, // 키: "age", 값: 30
+        };
+
+        alert(user.name);
+        alert(user.age);
+
+        user.name = "Tom";
+        user.age = 16; // 키 수정
+
+        alert(user.name);
+        alert(user.age);
+        */
+      /////////////////////////////////////////////////////////////
+
+      function makeUser(name, age) {
+        return {
+          name, //name: name,
+          age, //age: age
+        };
+      }
+
+      /////////////////////////////////////////////////////////
+      /*
+
+        let user1 = makeUser("Tom", 16);
+        let user2 = makeUser("dong", 16);
+        let user3 = makeUser("young", 10);
+        user1.isAdmin = true; // 키 추가
+        user1.hiihni = "hihihihihi"; // 키 추가
+        delete user1.isAdmin; // 키 삭제
+        delete user1.hiihni; // 키 삭제
+        alert(user1.isAdmin);
+        alert(user1.hiihni);
+        alert("name = " + user1.name + ", age = " + user1.age);
+        alert("name = " + user2.name + ", age = " + user2.age);
+        alert("name = " + user3.name + ", age = " + user3.age);
+
+        */
+      ///////////////////////////////////////////////////////////////
+      /*
+
+        let user = { name: "Tom", age: 16 };
+        alert("age" in user);     //in은 우항에 있는 객체 안에 좌항에 있는 key 이름이 있는 가 를 ture와 false로 구분한다
+        alert("blabla" in user);
+
+        */
+      /////////////////////////////////////////////////////////////////
+      /*
+
+        let user = makeUser("Tom", 16);
+        user.isAdmin = true;
+
+        for (let key in user) {
+          alert(key); // name, age, isAdmin
+          //키에 해당하는 값
+          alert(user[key]); //Tom, 16, true
+        }
+
+        */
+      //////////////////////////////////////////////////////////////////
+      //문제 1
+      //   let user = {};            //빈 객체 생성
+      //   user.name = "Jone";       //프로퍼티 추가
+      //   user.surname = "Smith";   //프로퍼티 추가
+      //   user.name = "Pete";       //프로퍼티 값 수정
+      //   delete user.name;         //프로퍼티 삭제
+      //문제 2
+      /*
+        function isEmpty(obj) { // 내 풀이
+          let looped = 0;
+          for (let key in obj) {
+            looped = 1;
+            return false;
+          }
+          if (looped == 0) {
+            return true;
+          }
+        }
+
+      //   function isEmpty2(sc) { // 선생님 풀이
+      //     for(let key in sc){
+      //         return false;
+      //     }
+      //     return true;
+      //   }
+        let schedule = {};
+
+        alert(isEmpty(schedule)); //true
+        schedule["8:30"] = "get up";
+
+        alert(isEmpty(schedule)); //false
+
+        */
+      ////////////////////////////////////////////////////////
+      /*
+
+      let user = makeUser("Tom", 16);
+
+      user.sayHi = function (message) {
+        alert(message);
+      };
+
+      user.sayHi("안녕 세상아!");
+
+      */
+      //////////////////////////////////////////////////////////
+      /*
+      let user = {};
+      user = {
+        name: "Tom",
+        age: 16,
+
+        sayHi1: function () {
+          alert(this.name);
+        },
+        sayHi2() {
+          alert(this.age);
+        },
+      };
+
+      user.sayHi1();
+      user.sayHi2();
+      */
+      //////////////////////////////////////////////////////////
+      /*
+      let user = { name: "dong" };
+      let admin = { name: "yeon" };
+
+      function sayHi() {
+        alert(this.name);
+      }
+
+      user.fun = sayHi; //별개의 객체에 동일한 함수 사용
+      admin.fun = sayHi;
+
+      user.fun(); // 우리는
+      admin.fun();
+
+      user["fun"](); // 같은 역할을 
+      admin["fun"](); // 수행해요
+      */
+      ///////////////////////////////////////////////////////////
+      /*
+      function User(name){
+        this.name = name;
+        this.isAdmin = false
+      }
+
+      let user = new User("보라"); //요런식으로 하면 같은 구조를 가진 여러개의 객체를 쉽게 선언할 수 있다.
+
+      alert(user.name);
+      alert(user.isAdmin);
+      */
+      //////////////////////////////////////////////////////////////
+      /*
+      class User {
+        constructor(name) { // 파라미터로 받을 것들을 정의하고
+          //constructor : 객체 초기화
+          this.name = name; //여기에 초기화 해준다.
+        }
+
+        sayHi() {
+          alert(this.name);
+        }
+      }
+
+      let user = new User("Tom"); //클래스를 사용하면 클래스 안에 있는 여러개의 함수들을 자유롭게 사용할 수 있다.
+      user.sayHi();
+      */
+      ////////////////////////////////////////////////////////
+      //문제 3
+      /*
+        let salaries = {
+          John: 100,
+          Ann: 160,
+          Pete: 130,
+        };
+        function plusAndNull(sc) {
+          let sum = 0;
+          for (let key in sc) {
+            sum += sc[key];
+          }
+          return sum;
+        }
+        sum = plusAndNull(salaries);
+        alert(sum);
+        */
+      //////////////////////////////////////////////////////
+      //문제 4
+      /*
+      let menu = {
+        width: 200,
+        height: 300,
+        title: "My menu",
+      };
+
+      function multiplyNumeric(sc) {
+        for (let key in sc) {
+          if (typeof sc[key] == "number") {
+            sc[key] *= 2;
+            alert(sc[key]);
+          }
+        }
+      }
+
+      multiplyNumeric(menu);
+      */
+      //////////////////////////////////////////////////////////
+      let calculator = {
+        num1: 0,
+        num2: 0,
+
+        read: function () {
+          let list = prompt("입력").split(" ");
+          this.num1 = parseInt(list[0]);
+          this.num2 = parseInt(list[1]);
+        },
+        sum() {
+          return this.num1 + this.num2;
+        },
+        mul() {
+          return this.num1 * this.num2;
+        },
+      };
+
+      calculator.read();
+      alert(calculator.sum());
+      alert(calculator.mul());
+    </script>
+  </body>
+</html>
