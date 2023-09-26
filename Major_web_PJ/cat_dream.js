@@ -11,7 +11,7 @@ let gameSpeed; // 게임 속도
 let keys = {}; // 키 값
 
 let tempSeoul;
-
+let textColor;
 
 //임시
 let consloeLogX;
@@ -38,8 +38,10 @@ class Cat {
     // ctx.fillRect(this.x, this.y, this.w, this.h);
     // ctx.closePath();
     let catImg = new Image();
+    const canvasContainer = document.querySelector(".canvas-container");
     if (tempSeoul > 15) { // 지역을 바꿀 수도 있지만 간단하게 하기위해 온도 조건만 바꿉니다.
-
+      canvasContainer.style.backgroundImage = "url('background_santa.png')";
+      textColor = "black"
       if (keys['KeyW']) {
         catImg.src = 'cat_santa.png'
         ctx.drawImage(catImg, this.x, this.y, this.w, this.h);
@@ -58,7 +60,8 @@ class Cat {
       }
 
     } else {
-
+      canvasContainer.style.backgroundImage = "url('background.png')";
+      textColor = "white";
       if (keys['KeyW']) {
         catImg.src = "cat.png";
         ctx.drawImage(catImg, this.x, this.y, this.w, this.h);
@@ -131,7 +134,13 @@ class Mouse {
     // ctx.fillRect(this.x, this.y, this.w, this.h);
     // ctx.closePath();
     let mouseImg = new Image();
-    mouseImg.src = "mouse.png";
+    if(tempSeoul > 15){
+      mouseImg.src = "mouse_santa.png";
+    }
+    else{
+      mouseImg.src = "mouse.png";
+    }
+    
     ctx.drawImage(mouseImg, this.x, this.y, this.w, this.h);
 
   }
@@ -215,7 +224,6 @@ function Start() {
 
   gameSpeed = 3; //3 // 화면 속도 조절
 
-
   stage = 1;
   highstage = 1;
 
@@ -226,15 +234,15 @@ function Start() {
   cat = new Cat(canvas.width / 2 - 30, canvas.height - 103, 100, 100, "black");
   mouse = new Mouse(canvas.width / 2 - 20, canvas.height - 1050, 65, 65, "gray");
 
-  stageText = new Text("Stage: " + stage, 25, 25, "left", "#212121", "20");
+  stageText = new Text("Stage: " + stage, 30, 30, "left", "black", "30");
 
   highstageText = new Text(
     "Highstage: " + highstage,
-    canvas.width - 25,
-    25,
+    canvas.width - 30,
+    30,
     "right",
-    "#212121",
-    "20"
+    "black",
+    "30"
   );
 
   requestAnimationFrame(Update);
